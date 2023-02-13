@@ -100,12 +100,12 @@ public class Tictac {
         }
          if ((arr[0][i].equals(arr[1][i])) && (arr[1][i].equals(arr[2][i])))
             {
-                ps.println("player playing with " +arr[1][i] + " is winner!");
+                ps.println("player with " +arr[1][i] + " is the winner!");
                 System.exit(0);
             }
         if (((arr[0][0].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][2]))) ||((arr[0][2].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][0]))))
             {
-                 ps.println("player playing with " +arr[1][1] + " is winner!");
+                 ps.println("The winner is player who plays with " +arr[1][1]");
                  System.exit(0);
              }
         }
