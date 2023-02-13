@@ -19,7 +19,7 @@ public class Tictac {
 
     }
     static void game(String[][] arr) {
-        Scanner s = new Scanner(System.in);
+
         PrintStream ps = new PrintStream(new FileOutputStream(FileDescriptor.out));
 
         int ind = 1;
@@ -42,39 +42,31 @@ public class Tictac {
             PrintStream ps = new PrintStream(new FileOutputStream(FileDescriptor.out));
 
         ps.println("player 1:x");
-        ps.println("player 2:o");
+        ps.println("player 2:O");
 
         int pl=1;
-        int loop=1;
 
 
         HashSet<Integer> hs=new HashSet<>();
-        while(loop!=0)
+
+        while(true)
         {
 
-            if (pl>9)
-            {
-                ps.println("The game has been drawn!");
-                break;
-            }
-            if(pl%2==0)
-            {
-                ps.println("player 2 can play!");
+            if(pl%2==0) {
+                ps.println("player 2 can play..choose any number from 1 to 9!");
                 int num = s.nextInt();
-                if (hs.contains(num))
-                {
+                if (hs.contains(num)) {
                     ps.println("This position has already taken enter different position!");
-                }
-                else {
+                } else {
                     ins(arr, num, pl);
-                    loop = winner(arr);
+                     winner(arr);
                     hs.add(num);
                     pl++;
                 }
             }
             if (pl%2!=0)
             {
-                ps.println("player 1 can play!");
+                ps.println("player 1 can play..choose any number from 1 to 9!");
                 int num = s.nextInt();
                 if (hs.contains(num))
                 {
@@ -83,45 +75,40 @@ public class Tictac {
                 else
                 {
                     ins(arr, num, pl);
-                    loop = winner(arr);
+                    winner(arr);
                     hs.add(num);
                     pl++;
                 }
             }
+            if (pl>9)
+            {
+                ps.println("The game has been drawn!");
+                break;
+            }
         }
 
     }
-    static int winner(String[][] arr)
-
-
+    static void winner(String[][] arr)
     {
         PrintStream ps=new PrintStream(new FileOutputStream(FileDescriptor.out));
-
-        int n=1;
         for (int i = 0; i <3 ; i++)
         {
-
-
-
         if ((arr[i][0].equals(arr[i][1])) && (arr[i][1].equals(arr[i][2])))
         {
-            ps.println(arr[i][0] + " is winner");
-            n=0;
-            break;
+            ps.println("player playing with " + arr[i][0] + " is winner!");
+            System.exit(0);
         }
          if ((arr[0][i].equals(arr[1][i])) && (arr[1][i].equals(arr[2][i])))
             {
-                ps.println(arr[0][i] + " is winner");
-                n=0;
-
+                ps.println("player playing with " +arr[1][i] + " is winner!");
+                System.exit(0);
             }
-        else if (((arr[0][0].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][2]))) ||((arr[0][2].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][0]))))
-        {
-            ps.println(arr [1][1] + "is winner");
-            n=0;
+        if (((arr[0][0].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][2]))) ||((arr[0][2].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][0]))))
+            {
+                 ps.println("player playing with " +arr[1][1] + " is winner!");
+                 System.exit(0);
+             }
         }
-        }
-    return n;
     }
     static void ins(String[][] arr,int n,int pl)
     {
@@ -131,7 +118,7 @@ public class Tictac {
         if (pl%2==0) {
             for (int i = 0; i < arr.length; i++) {
                 for (int j = 0; j < arr[i].length; j++) {
-                    arr[row][col] = "0";
+                    arr[row][col] = "O";
                 }
             }
             show(arr);
