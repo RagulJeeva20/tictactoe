@@ -18,30 +18,35 @@ public class Tictac {
         game(arr);
 
     }
-    static void game(String[][] arr)
-    {
-        Scanner s=new Scanner(System.in);
-        PrintStream ps=new PrintStream(new FileOutputStream(FileDescriptor.out));
+    static void game(String[][] arr) {
+        Scanner s = new Scanner(System.in);
+        PrintStream ps = new PrintStream(new FileOutputStream(FileDescriptor.out));
 
-        int ind=1;
-        for (int i = 0; i < arr.length ; i++)
-        {
+        int ind = 1;
+        for (int i = 0; i < arr.length; i++) {
             ps.print("|");
-            for (int j = 0; j <arr[i].length; j++)
-            {
-                arr[i][j]= String.valueOf(ind);
-                ps.print(arr[i][j]+ " |");
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = String.valueOf(ind);
+                ps.print(arr[i][j] + " |");
                 ind++;
             }
             ps.println("\n+--+--+--+");
 
 
         }
+        versus(arr);
+    }
+        static void versus(String[][] arr)
+        {
+            Scanner s=new Scanner(System.in);
+            PrintStream ps = new PrintStream(new FileOutputStream(FileDescriptor.out));
+
         ps.println("player 1:x");
         ps.println("player 2:o");
 
         int pl=1;
         int loop=1;
+
 
         HashSet<Integer> hs=new HashSet<>();
         while(loop!=0)
@@ -108,14 +113,12 @@ public class Tictac {
             {
                 ps.println(arr[0][i] + " is winner");
                 n=0;
-                break;
 
             }
         else if (((arr[0][0].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][2]))) ||((arr[0][2].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][0]))))
         {
             ps.println(arr [1][1] + "is winner");
             n=0;
-            break;
         }
         }
     return n;
