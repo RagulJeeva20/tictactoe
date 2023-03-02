@@ -105,7 +105,7 @@ public class Tictac {
             }
         if (((arr[0][0].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][2]))) ||((arr[0][2].equals(arr[1][1])) &&(arr[1][1].equals(arr[2][0]))))
             {
-                 ps.println("The winner is player who plays with " +arr[1][1]");
+                 ps.println("The winner is player who plays with " +arr[1][1]);
                  System.exit(0);
              }
         }
